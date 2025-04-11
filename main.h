@@ -22,12 +22,10 @@ struct Graph {
     struct AdjList* array;//Tableau de listes d'adjacence
 };
 //signature de fonction qui creer le noeud (NewAdjListNode)
-struct AdjListNode* newAdjListNode(int dest, char nom_complet[], int identifiant);
+struct AdjListNode* createNode(int dest, char nom_complet[], int identifiant);
 //signature qui creer le graph 
 struct Graph* createGraph(int V);
 //signature de fonction createuser 
 void createUser(struct Graph* graph, char nom_complet[], int id);
 //signature de fonction addfreind 
 void addFriend(struct Graph* graph, int user1, int user2);
-
-

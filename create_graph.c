@@ -14,7 +14,7 @@ struct Graph* createGraph(int V) {
         printf("Saisissez l'identifiant de l'utilisateur %d:",i);
         scanf("%d", &id);
        // Ajouter l'utilisateur dans la liste d'adjacence
-        struct AdjListNode* newNode = newAdjListNode(i, nom, id);
+        struct AdjListNode* newNode = createNode(i, nom, id);
         graph->array[i].head = newNode;
     }
     return graph;
