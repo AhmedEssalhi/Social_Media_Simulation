@@ -1,4 +1,3 @@
-
 #include"main.h"
 // Fonction pour ajouter un utilisateur
 void createUser(struct Graph* graph) {
@@ -10,7 +9,8 @@ void createUser(struct Graph* graph) {
          printf("Entrez l'identifiant de l'utilisateur : ");
         scanf("%d", &identifiant);  // Lire l'identifiant
       // Créer un noeud d'adjacence pour cet utilisateur
-        struct AdjListNode* newNode = newAdjListNode(graph->pos, nom_complet, identifiant);
+        struct AdjListNode* newNode;
+	newNode = newAdjListNode(graph->pos, nom_complet, identifiant);
     // Ajouter ce noeud à la liste d'adjacence au sommet correspondant à 'pos'
         graph->array[graph->pos].head = newNode;
        // Incrémenter 'pos' pour le prochain utilisateur
