@@ -1,20 +1,28 @@
-#include "main.h"
-int main (){
-	struct AdjListNode *node;
-	struct AdjList *list;
-	struct Graph *graph;
-	int v;
+#include"main.h"
+int main() {
+    struct Graph* graph = createGraph();  // Créer un graphe vide
+    int choix;
+    do {
+        printf("\nMenu :\n");
+        printf("1. Ajouter un utilisateur\n");
+        printf("2. Quitter\n");
+        printf("Entrez votre choix : ");
+        scanf("%d", &choix);
 
-	printf("Entrer le nombre des utilisateurs: ");
-	scanf("%d", &v);
-	//newAdjListNode(1, "rida", 99);
-	node = createNode(2, "Ahmed Es-salhi", 10);
-	printf("%s\nID: %d\nDest: %d\n", 
-		node->nom_complet, 
-		node->identifiant, 
-		node->dest
-	);
-	printf("Happy Coding\n");
+        switch (choix) {
+            case 1:
+                createUser(graph);  // Ajouter un utilisateur
+                break;
+            case 2:
+                printf("Quitter le programme.\n");
+                break;
+            default:
+                printf("Choix invalide, veuillez réessayer.\n");
+                break;
+        }
+    } while (choix != 2);
 
-	return 0;
+    return 0;
 }
+
+

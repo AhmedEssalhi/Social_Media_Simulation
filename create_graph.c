@@ -1,21 +1,15 @@
 #include "main.h"
-// Fonction pour créer un graphe avec V sommets(utilisateurs )
-struct Graph* createGraph(int V) {
+struct Graph* createGraph() {
     struct Graph* graph = (struct Graph*)malloc(sizeof(struct Graph));
-    graph->V = V;//Cela indique combien d'utilisateurs (sommets) seront dans notre graphe
-    graph->array = (struct AdjList*)malloc(V * sizeof(struct AdjList));
+    graph->array = (struct AdjList*)malloc(MAX_ARRAY * sizeof(struct AdjList));
+    graph->pos = 0; // Aucune utilisateur ajouté au départ
 
-    for (int i = 0; i < V; ++i) {
-        graph->array[i].head = NULL;//Au début,la liste d'adjacence de chaque sommet (utilisateur) est vide,nous initialisons  head à NULL
-        char nom[100];
-        int id;
-        printf("Saisissez le nom complet de l'utilisateur %d:",i);
-        scanf("%s", nom);
-        printf("Saisissez l'identifiant de l'utilisateur %d:",i);
-        scanf("%d", &id);
-       // Ajouter l'utilisateur dans la liste d'adjacence
-        struct AdjListNode* newNode = createNode(i, nom, id);
-        graph->array[i].head = newNode;
+    // Initialiser les listes d'adjacence pour chaque sommet
+    for (int i = 0; i < MAX_ARRAY; ++i) {
+        graph->array[i].head = NULL; // Chaque liste d'adjacence commence vide
     }
+
     return graph;
 }
+
+
