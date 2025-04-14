@@ -26,6 +26,6 @@ struct Graph* createGraph(); // Créer un graphe vide
 void createUser(struct Graph* graph); // Ajouter un utilisateur
 void addFriend(struct Graph* graph, int user1, int user2); // Ajouter un ami
 struct AdjListNode* newAdjListNode(int dest, char nom_complet[], int identifiant); // Créer un noeud d'adjacence
-void printArrayList(struct Graph graph);
+void printUserInfos(struct Graph graph);
 
 #endif

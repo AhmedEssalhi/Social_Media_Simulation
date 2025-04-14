@@ -18,7 +18,7 @@ int main() {
                 printf("Quitter le programme.\n");
                 break;
 	    case 3:
-		printArrayList(*graph);	
+		printUserInfos(*graph);	
 		break;
             default:
                 printf("Choix invalide, veuillez réessayer.\n");
