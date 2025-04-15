@@ -16,5 +16,5 @@ void printUserInfos(struct Graph graph)
 		if (graph.pos > 1)
 			printf("----------------------------\n");
 	}
-	printf("---------------------------- \n");
+	//printf("---------------------------- \n");
 }
