@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdlib.h>
+#include <string.h>
 
 void addFriend(struct Graph* graph) {
     int id1, id2;
@@ -7,7 +9,7 @@ void addFriend(struct Graph* graph) {
     // Saisie des IDs
     printf("Entrez l'ID du premier utilisateur : ");
     scanf("%d", &id1);
-    getchar();
+    getchar(); // Nettoyer le buffer
 
     printf("Entrez l'ID du second utilisateur : ");
     scanf("%d", &id2);
@@ -43,29 +45,26 @@ void addFriend(struct Graph* graph) {
     }
 
     // Création des liens d'amitié (bidirectionnels)
-    struct AdjListNode* newFriend1 = newAdjListNode(
-        index2,
-        graph->array[index2].head->nom_complet,
-        graph->array[index2].head->identifiant,
-        graph->array[index2].head->dateNaissance.day,
-        graph->array[index2].head->dateNaissance.month,
-        graph->array[index2].head->dateNaissance.year
-    );
+    // Ami 1 -> Ami 2
+    struct AdjListNode* newFriend1 = malloc(sizeof(struct AdjListNode));
+    newFriend1->dest = index2;
+    strcpy(newFriend1->nom_complet, graph->array[index2].head->nom_complet);
+    newFriend1->identifiant = graph->array[index2].head->identifiant;
+    newFriend1->dateNaissance = graph->array[index2].head->dateNaissance; // Copie toute la structure date
     newFriend1->next = graph->array[index1].head->next;
     graph->array[index1].head->next = newFriend1;
 
-    struct AdjListNode* newFriend2 = newAdjListNode(
-        index1,
-        graph->array[index1].head->nom_complet,
-        graph->array[index1].head->identifiant,
-        graph->array[index1].head->dateNaissance.day,
-        graph->array[index1].head->dateNaissance.month,
-        graph->array[index1].head->dateNaissance.year
-    );
+    // Ami 2 -> Ami 1
+    struct AdjListNode* newFriend2 = malloc(sizeof(struct AdjListNode));
+    newFriend2->dest = index1;
+    strcpy(newFriend2->nom_complet, graph->array[index1].head->nom_complet);
+    newFriend2->identifiant = graph->array[index1].head->identifiant;
+    newFriend2->dateNaissance = graph->array[index1].head->dateNaissance;
     newFriend2->next = graph->array[index2].head->next;
     graph->array[index2].head->next = newFriend2;
 
-    printf("Amitié établie entre %s (ID:%d) et %s (ID:%d)\n",
-           graph->array[index1].head->nom_complet, id1,
-           graph->array[index2].head->nom_complet, id2);
+    // Confirmation
+    printf("Amitié établie entre :\n");
+    printf("- %s (ID:%d)\n", graph->array[index1].head->nom_complet, id1);
+    printf("- %s (ID:%d)\n", graph->array[index2].head->nom_complet, id2);
 }
