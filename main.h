@@ -33,7 +33,7 @@ struct Graph {
 // Prototypes des fonctions
 struct Graph* createGraph(); // Créer un graphe vide
 void createUser(struct Graph* graph); // Ajouter un utilisateur
-void addFriend(struct Graph* graph, int user1, int user2); // Ajouter un ami
+void addFriend(struct Graph* graph); // Ajouter un ami
 void printUserInfos(struct Graph);
 int IdGenerator(struct AdjListNode);
 unsigned int randomNumber();

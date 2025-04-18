@@ -21,14 +21,14 @@ int main() {
 	    case 3:
 		printUserInfos(*graph);	
 		break;
-        case 4:
-        addFriend(graph);
-        break;
+            case 4:
+	        addFriend(graph);
+        	break;
             default:
                 printf("Choix invalide, veuillez réessayer.\n");
                 break;
         }
-    } while (choix != 4);
+    } while (choix != 2);
 
     return 0;
 }
