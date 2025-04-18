@@ -34,7 +34,6 @@ struct Graph {
 struct Graph* createGraph(); // Créer un graphe vide
 void createUser(struct Graph* graph); // Ajouter un utilisateur
 void addFriend(struct Graph* graph, int user1, int user2); // Ajouter un ami
-struct AdjListNode* newAdjListNode(int dest, char nom_complet[], int identifiant, int jour, int mois, int annee); // Créer un noeud d'adjacence
 void printUserInfos(struct Graph);
 int IdGenerator(struct AdjListNode);
 unsigned int randomNumber();

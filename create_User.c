@@ -12,8 +12,8 @@ void createUser(struct Graph* graph) {
 	    printf("Entrez le nom complet de l'utilisateur : ");
 	    scanf(" %[^\n]", newNode->nom_complet);  /*Lire le nom complet avec espaces*/
 	    printf("Entrer la date de naissance: ");
-	    scanf("%u-%u-%u", &newNode->dateNaissance.day, 
-			    &newNode->dateNaissance.month, 
+	    scanf("%u-%u-%u", &newNode->dateNaissance.day,
+			    &newNode->dateNaissance.month,
 			    &newNode->dateNaissance.year);
 	    newNode->identifiant = IdGenerator(*newNode);  /*Lire l'identifiant*/
 
