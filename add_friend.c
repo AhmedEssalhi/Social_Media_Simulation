@@ -1,7 +1,10 @@
 #include "main.h"
 #include <stdlib.h>
 #include <string.h>
-
+/**
+ * addfreind - Établit une amitié entre deux utilisateurs dans le graphe en ajoutant des liens bidirectionnels.
+ * @param graph :c  Pointeur vers le graphe contenant les utilisateurs et leurs amitiés.
+ */
 void addFriend(struct Graph* graph) {
     int id1, id2;
     int index1 = -1, index2 = -1;

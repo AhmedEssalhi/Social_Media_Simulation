@@ -1,4 +1,10 @@
 #include "main.h"
+/**
+ * createGraph - Crée et initialise un graphe vide avec une capacité maximale prédéfinie.
+ *
+ * @return Pointeur vers le graphe nouvellement créé.
+ */
+
 struct Graph* createGraph() {
     struct Graph* graph = (struct Graph*)malloc(sizeof(struct Graph));
     graph->array = (struct AdjList*)malloc(MAX_ARRAY * sizeof(struct AdjList));

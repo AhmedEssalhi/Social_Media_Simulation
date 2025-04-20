@@ -1,4 +1,6 @@
 #include"main.h"
+int main();
+
 int main() {
     struct Graph* graph = createGraph();  // Créer un graphe vide
     int choix;

@@ -1,4 +1,10 @@
 #include "main.h"
+/**
+ * printUserInfos -Affiche les informations de tous les utilisateurs présents dans le graphe.
+ *
+ * @param graph Graphe contenant les utilisateurs à afficher.
+ */
+
 
 void printUserInfos(struct Graph graph)
 {

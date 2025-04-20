@@ -1,6 +1,10 @@
 #include "main.h"
+/**
+ * createUser -Crée un nouvel utilisateur et l'ajoute au graphe s'il reste de la place.
+ *
+ * @param graph Pointeur vers le graphe dans lequel ajouter l'utilisateur.
+ */
 
-// Fonction pour ajouter un utilisateur
 void createUser(struct Graph* graph) {
     if (graph->pos < MAX_ARRAY) {
 	    char nom_complet[100];
