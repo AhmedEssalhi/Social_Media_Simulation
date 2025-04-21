@@ -1,30 +1,36 @@
 #include"main.h"
-int main();
 
-int main() {
-    struct Graph* graph = createGraph();  // Créer un graphe vide
+/**
+ * main - Fonction de test
+ *
+ * Return - 0 en cas de succes
+ */
+int main(void) 
+{
+    struct Graph* graph = createGraph();
     int choix;
+
     do {
         printf("\nMenu :\n");
         printf("1. Ajouter un utilisateur\n");
-        printf("2. Quitter\n");
-	printf("3. Afficher la liste\n");
-        printf("4. creer ami(e)\n");
+        printf("2. Afficher la liste\n");
+	printf("3. Creer ami(e)\n");
+        printf("4. Quitter\n");
         printf("Entrez votre choix : ");
         scanf("%d", &choix);
 
         switch (choix) {
             case 1:
-                createUser(graph);  // Ajouter un utilisateur
+                createUser(graph);
                 break;
             case 2:
-                printf("Quitter le programme.\n");
+		printUserInfos(*graph);
                 break;
 	    case 3:
-		printUserInfos(*graph);	
+		addFriend(graph);
 		break;
             case 4:
-	        addFriend(graph);
+		printf("Quitter le programme\n");
         	break;
             default:
                 printf("Choix invalide, veuillez réessayer.\n");
