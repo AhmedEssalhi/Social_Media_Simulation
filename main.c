@@ -36,7 +36,7 @@ int main(void)
                 printf("Choix invalide, veuillez réessayer.\n");
                 break;
         }
-    } while (choix != 2);
+    } while (choix != 4);
 
     return 0;
 }

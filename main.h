@@ -63,8 +63,7 @@ struct Graph {
  */
 struct Graph* createGraph();
 void createUser(struct Graph *);
-void addFriend(struct Graph *, int, int);
-struct AdjListNode* newAdjListNode(int, char, int, int, int, int);
+void addFriend(struct Graph *);
 void printUserInfos(struct Graph);
 int IdGenerator(struct AdjListNode);
 unsigned int randomNumber();
