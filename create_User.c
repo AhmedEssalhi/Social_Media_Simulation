@@ -1,6 +1,10 @@
 #include "main.h"
+/**
+ * createUser -Crée un nouvel utilisateur et l'ajoute au graphe s'il reste de la place.
+ *
+ * @param graph Pointeur vers le graphe dans lequel ajouter l'utilisateur.
+ */
 
-// Fonction pour ajouter un utilisateur
 void createUser(struct Graph* graph) {
     if (graph->pos < MAX_ARRAY) {
 	    char nom_complet[100];
@@ -12,8 +16,8 @@ void createUser(struct Graph* graph) {
 	    printf("Entrez le nom complet de l'utilisateur : ");
 	    scanf(" %[^\n]", newNode->nom_complet);  /*Lire le nom complet avec espaces*/
 	    printf("Entrer la date de naissance: ");
-	    scanf("%u-%u-%u", &newNode->dateNaissance.day, 
-			    &newNode->dateNaissance.month, 
+	    scanf("%u-%u-%u", &newNode->dateNaissance.day,
+			    &newNode->dateNaissance.month,
 			    &newNode->dateNaissance.year);
 	    newNode->identifiant = IdGenerator(*newNode);  /*Lire l'identifiant*/
 
