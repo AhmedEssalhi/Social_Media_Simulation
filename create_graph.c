@@ -5,8 +5,8 @@
  * @return Pointeur vers le graphe nouvellement créé.
  */
 
-struct Graph* createGraph() {
-    struct Graph* graph = (struct Graph*)malloc(sizeof(struct Graph));
+Graph* createGraph() {
+    Graph* graph = (Graph *)malloc(sizeof(Graph));
     graph->array = (struct AdjList*)malloc(MAX_ARRAY * sizeof(struct AdjList));
     graph->pos = 0; // Aucune utilisateur ajouté au départ
 

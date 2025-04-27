@@ -5,7 +5,7 @@
  *
  * @graph: Pointeur sur le graphe contenant les utilisateurs et leurs amitiés.
  */
-void addFriend(struct Graph* graph) {
+void addFriend(Graph* graph) {
     int id1, id2;
     int index1 = -1, index2 = -1;
 
@@ -33,7 +33,7 @@ void addFriend(struct Graph* graph) {
         return;
     }
 
-    struct AdjListNode* current = graph->array[index1].head->next;
+    AdjListNode* current = graph->array[index1].head->next;
     while (current != NULL) {
         if (current->identifiant == id2) {
             printf("Ces utilisateurs sont déjà amis\n");
@@ -42,7 +42,7 @@ void addFriend(struct Graph* graph) {
         current = current->next;
     }
 
-    struct AdjListNode* newFriend1 = malloc(sizeof(struct AdjListNode));
+    AdjListNode* newFriend1 = malloc(sizeof(AdjListNode));
     newFriend1->dest = index2;
     strcpy(newFriend1->nom_complet, graph->array[index2].head->nom_complet);
     newFriend1->identifiant = graph->array[index2].head->identifiant;
@@ -50,7 +50,7 @@ void addFriend(struct Graph* graph) {
     newFriend1->next = graph->array[index1].head->next;
     graph->array[index1].head->next = newFriend1;
 
-    struct AdjListNode* newFriend2 = malloc(sizeof(struct AdjListNode));
+    AdjListNode* newFriend2 = malloc(sizeof(AdjListNode));
     newFriend2->dest = index1;
     strcpy(newFriend2->nom_complet, graph->array[index1].head->nom_complet);
     newFriend2->identifiant = graph->array[index1].head->identifiant;

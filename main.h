@@ -16,26 +16,27 @@
  * @month: le mois de naissance
  * @year: l'année de naissance
  */
-struct date {
+typedef struct {
     unsigned int day;
     unsigned int month;
     unsigned int year;
-};
+}Date;
 
 /**
- * struct AdjListNode - La structure du noeud (user)
+ * AdjListNode - La structure du noeud (user)
  * 
  * @nom_complet - chaine de character du nom complet
  * @identifiant - identifiant d'utilisateur
  * @dateNaissance - structure represente la date de naissance
  * @next - Pointeur sur l'element suivant
  */
+typedef struct AdjListNode AdjListNode;
 struct AdjListNode {
     int dest;
     char nom_complet[100];
     int identifiant;
-    struct date dateNaissance;
-    struct AdjListNode* next;
+    Date dateNaissance;
+    AdjListNode* next;
 };
 
 /**
@@ -44,28 +45,28 @@ struct AdjListNode {
  * @head - Pointeur vers le premier element de la liste d'adjacence
  */
 struct AdjList {
-    struct AdjListNode* head;
+    AdjListNode* head;
 };
 
 /**
- * struct Graph - structure represente le graph
+ * Graph - structure represente le graph
  *
  * @array - pointeur sur un tableau des listes d'adjacence
  * @pos - définie la position du nouveau user ajouter
  */
-struct Graph {
+typedef struct {
     struct AdjList* array;
     int pos;
-};
+}Graph;
 
 /**
  * Les prototypes des fonction utiliser à  l'implementation
  */
-struct Graph* createGraph();
-void createUser(struct Graph *);
-void addFriend(struct Graph *);
-void printUserInfos(struct Graph);
-int IdGenerator(struct AdjListNode);
+Graph* createGraph();
+void createUser(Graph *);
+void addFriend(Graph *);
+void printUserInfos(Graph);
+int IdGenerator(AdjListNode);
 unsigned int randomNumber();
 
 #endif
