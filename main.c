@@ -17,6 +17,7 @@ int main(void)
         printf("2. Afficher la liste\n");
         printf("3. Creer ami(e)\n");
         printf("4. Quitter\n");
+        printf("5. Afficher les amis\n");
         printf("Entrez votre choix : ");
         scanf("%d", &choix);
 
@@ -33,6 +34,9 @@ int main(void)
             break;
         case 4:
             printf("Quitter le programme\n");
+            break;
+        case 5:
+            printFriends(*graph);
             break;
         default:
             printf("Choix invalide, veuillez réessayer.\n");

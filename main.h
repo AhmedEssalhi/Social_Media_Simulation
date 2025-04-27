@@ -44,9 +44,9 @@ struct AdjListNode {
  *
  * @head - Pointeur vers le premier element de la liste d'adjacence
  */
-struct AdjList {
+typedef struct {
     AdjListNode* head;
-};
+}AdjList;
 
 /**
  * Graph - structure represente le graph
@@ -55,7 +55,7 @@ struct AdjList {
  * @pos - définie la position du nouveau user ajouter
  */
 typedef struct {
-    struct AdjList* array;
+    AdjList* array;
     int pos;
 }Graph;
 
@@ -68,6 +68,7 @@ void addFriend(Graph *);
 void printUserInfos(Graph);
 int IdGenerator(AdjListNode);
 unsigned int randomNumber();
+void printFriends(Graph);
 
 #endif
 

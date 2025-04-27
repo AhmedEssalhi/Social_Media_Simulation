@@ -7,7 +7,7 @@
 
 Graph* createGraph() {
     Graph* graph = (Graph *)malloc(sizeof(Graph));
-    graph->array = (struct AdjList*)malloc(MAX_ARRAY * sizeof(struct AdjList));
+    graph->array = (AdjList *)malloc(MAX_ARRAY * sizeof(AdjList));
     graph->pos = 0; // Aucune utilisateur ajouté au départ
 
     // Initialiser les listes d'adjacence pour chaque sommet
