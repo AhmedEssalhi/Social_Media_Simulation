@@ -9,6 +9,7 @@ int main(void)
 {
     Graph *graph = createGraph();
     int choix;
+    int id;
 
     do
     {
@@ -36,7 +37,11 @@ int main(void)
             printf("Quitter le programme\n");
             break;
         case 5:
-            printFriends(*graph);
+        {
+            printf("L'identifiant: ");
+            scanf("%d", &id);
+            printFriends(*graph, id);
+        }
             break;
         default:
             printf("Choix invalide, veuillez réessayer.\n");

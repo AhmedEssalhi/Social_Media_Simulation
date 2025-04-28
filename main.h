@@ -68,7 +68,8 @@ void addFriend(Graph *);
 void printUserInfos(Graph);
 int IdGenerator(AdjListNode);
 unsigned int randomNumber();
-void printFriends(Graph);
+int printFriends(Graph, int);
+void printLinkedList(AdjList *);
 
 #endif
 
