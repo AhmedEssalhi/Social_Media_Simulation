@@ -36,7 +36,7 @@ struct AdjListNode {
     char nom_complet[100];
     int identifiant;
     Date dateNaissance;
-    AdjListNode* next;
+    AdjListNode *next;
 };
 
 /**
@@ -45,7 +45,7 @@ struct AdjListNode {
  * @head - Pointeur vers le premier element de la liste d'adjacence
  */
 typedef struct {
-    AdjListNode* head;
+    AdjListNode *head;
 }AdjList;
 
 /**
@@ -55,7 +55,7 @@ typedef struct {
  * @pos - définie la position du nouveau user ajouter
  */
 typedef struct {
-    AdjList* array;
+    AdjList *array;
     int pos;
 }Graph;
 
@@ -70,6 +70,10 @@ int IdGenerator(AdjListNode);
 unsigned int randomNumber();
 int printFriends(Graph, int);
 void printLinkedList(AdjList *);
+int searchUserId(Graph, int);
+AdjListNode *searchFriend(AdjList *, int);
+AdjListNode *findCommonFriends(Graph, int, int);
+void printNodeInfo(AdjListNode *);
 
 #endif
 

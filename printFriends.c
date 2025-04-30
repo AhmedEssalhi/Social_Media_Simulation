@@ -21,6 +21,8 @@ void printLinkedList(AdjList *head)
 
 int printFriends(Graph graph, int id)
 {
+    if (searchUserId(graph, id) == -1)
+        return -1;
     for (int i = 0; i < graph.pos; i++)
     {
         if (id == graph.array[i].head->identifiant)
@@ -29,5 +31,4 @@ int printFriends(Graph graph, int id)
             return 1;
         }
     }
-    return -1;
 }

@@ -8,8 +8,7 @@
 int main(void)
 {
     Graph *graph = createGraph();
-    int choix;
-    int id;
+    int choix, id, pos;
 
     do
     {
@@ -19,6 +18,9 @@ int main(void)
         printf("3. Creer ami(e)\n");
         printf("4. Quitter\n");
         printf("5. Afficher les amis\n");
+        printf("6. Rechecher un utilisateur\n");
+        printf("7. Rechercher un amis\n");
+        printf("8. Trouver amis en commun\n");
         printf("Entrez votre choix : ");
         scanf("%d", &choix);
 
@@ -41,6 +43,63 @@ int main(void)
             printf("L'identifiant: ");
             scanf("%d", &id);
             printFriends(*graph, id);
+        }
+            break;
+        case 6:
+        {
+            printf("L'identifiant: ");
+            scanf("%d", &id);
+            pos = searchUserId(*graph, id);
+            if (pos == -1)
+                printf("User id (%d), Not Found\n", id);
+            else   
+                printf("User id (%d) Found in position %d\n", id, pos);
+        }
+            break;
+        case 7:
+        {
+            AdjListNode *found;
+            int friendId;
+
+            printf("User ID: ");
+            scanf("%d", &id);
+            pos = searchUserId(*graph, id);
+            if (pos == -1)
+            {
+                printf("User ID not found\n");
+                break;
+            }
+            printf("pos-> %d\nFriend ID: ", pos);
+            scanf("%d", &friendId);
+            found = searchFriend(&graph->array[pos - 1], friendId);
+            if (found == NULL)
+            {
+                printf("Friend not found\n");
+                break;
+            }
+            printf("\nNode found\n");
+            printNodeInfo(found);
+        }
+            break;
+        case 8:
+        {
+            int id1, id2;
+            AdjListNode *commonFriend;
+
+            printf("ID1: ");
+            scanf("%d", &id1);
+            printf("ID2: ");
+            scanf("%d", &id2);
+
+            commonFriend = findCommonFriends(*graph, id1, id2);
+            
+            if (!commonFriend)
+            {
+                printf("There is no common friend between IdUser %d and IdUser %d\n", id1, id2);
+                break;
+            }
+            printf("Common friend found\n");
+            printNodeInfo(commonFriend);
         }
             break;
         default:
