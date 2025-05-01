@@ -17,7 +17,7 @@ void printUserInfos(Graph graph)
 	for (i = 0; i < graph.pos; i++)
 	{
 		printf("Username: %s\n", graph.array[i].head->nom_complet);
-		printf("Date de naissance: %.2d/%.2d/%d\n", 
+		printf("Date de naissance: %.2d/%.2d/%.4d\n", 
 				graph.array[i].head->dateNaissance.day,
 				graph.array[i].head->dateNaissance.month,
 				graph.array[i].head->dateNaissance.year);
