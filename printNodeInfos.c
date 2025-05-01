@@ -1,7 +1,9 @@
 #include "main.h"
 
 /**
+ * printNodeInfo - print the informations of a single user
  * 
+ * @node: the user node to print the infos from
  */
 void printNodeInfo(AdjListNode *node)
 {

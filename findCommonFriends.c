@@ -1,7 +1,13 @@
 #include "main.h"
 
 /**
+ * findCommonFriends - finds the first common friend between two users
  * 
+ * @graph: structure variables contains the pointer to the adjencency list
+ * @id1: id of the first user
+ * @id2: id of the second user
+ * 
+ * Return: user node contains the common friend infos. NULL otherwise
  */
 AdjListNode *findCommonFriends(Graph graph, int id1, int id2)
 {
@@ -19,9 +25,7 @@ AdjListNode *findCommonFriends(Graph graph, int id1, int id2)
     commonFriend = NULL;
     start1 = user1->head->next;
     start2 = user2->head->next;
-    printNodeInfo(start1);
-    printNodeInfo(start2);
-    
+
     commonFriend = NULL;
     while (start1)
     {

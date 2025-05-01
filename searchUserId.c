@@ -1,11 +1,12 @@
 #include "main.h"
 
 /**
- * searchUserId - 
+ * searchUserId - search for a user in the application
  * 
- * @graph:
- * @id:
- * Return:
+ * @graph: structure variable contains pointer to the head of adjencency list
+ * @id: user id searching for
+ * 
+ * Return: The position of the user found. -1 otherwise
  */
 int searchUserId(Graph graph, int id)
 {

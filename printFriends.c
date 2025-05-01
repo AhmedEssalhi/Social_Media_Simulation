@@ -1,5 +1,11 @@
 #include "main.h"
 
+
+/**
+ * printLinkedList - print a friend list for a specefic user
+ * 
+ * @head: pointer to the user whose friends list to be printed
+ */
 void printLinkedList(AdjList *head)
 {
     AdjListNode *listNode = head->head;
@@ -19,6 +25,14 @@ void printLinkedList(AdjList *head)
     printf("------------------------------------------\n");
 }
 
+/**
+ * printFriends - search and print a specefic user friends list if found
+ * 
+ * @graph: structure variable contains the pointer to the adjencency list
+ * @id: id of the user to search for and print their friends list if found
+ * 
+ * Return: 1 in case of success (user found). -1 otherwise
+ */
 int printFriends(Graph graph, int id)
 {
     if (searchUserId(graph, id) == -1)
