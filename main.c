@@ -21,6 +21,7 @@ int main(void)
         printf("6. Rechecher un utilisateur\n");
         printf("7. Rechercher un amis\n");
         printf("8. Trouver amis en commun\n");
+	printf("9. Degré de séparation\n");
         printf("Entrez votre choix : ");
         scanf("%d", &choix);
 
@@ -102,6 +103,23 @@ int main(void)
             printNodeInfo(commonFriend);
         }
             break;
+	case 9:
+                {
+                    int id1, id2, degree;
+        
+                    printf("ID1: ");
+                    scanf("%d", &id1);
+                    printf("ID2: ");
+                    scanf("%d", &id2);
+        
+                    degree = degreSeparation(graph, id1, id2);
+        
+                    if (degree == -1)
+                        printf("Pas de lien entre %d et %d\n", id1, id2);
+                    else
+                        printf("Le degre de separation entre %d et %d est: %d\n", id1, id2, degree);
+                }
+                    break;
         default:
             printf("Choix invalide, veuillez réessayer.\n");
             break;
