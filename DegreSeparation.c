@@ -1,20 +1,27 @@
 #include "main.h"
 
+/**
+ * degreSeparation - Donner le degree de separation entre deux utilisateur
+ * 
+ * @graph: pointeur sur le graph
+ * @id1: pointer sur l'ID du premier utilisateur
+ * @id2: pointer sur l'ID du deuxieme utilisateur
+ * 
+ * Return: le degree de separation, -1 s'il n'existe pas
+ */
 int degreSeparation(Graph* graph, int id1, int id2)
 {
-    if(id1 == id2) return 0; // Si l'utilisateur courant est la cible, degré = 0.
+    if(id1 == id2) return 0;
 
-    int visited[MAX_ARRAY] = {0}; // Marquer chaque sommet comme non visité
-    int level[MAX_ARRAY];         // Stocker la distance depuis le sommet de départ
-    int file[MAX_ARRAY];          // File pour l'algorithme BFS
-    int front = 0, rear = 0;      // Pointeurs de la file
-    int start = -1, end = -1;     // Indices des utilisateurs dans le tableau
+    int visited[MAX_ARRAY] = {0}; 
+    int level[MAX_ARRAY];         
+    int file[MAX_ARRAY];          
+    int front = 0, rear = 0;      
+    int start = -1, end = -1;     
 
-    // Initialiser les niveaux à -1
     for(int i = 0; i < MAX_ARRAY; ++i)
         level[i] = -1;
 
-    // Trouver les indices correspondants aux id
     for(int i = 0; i < graph->pos; ++i)
     {
         if(graph->array[i].head && graph->array[i].head->identifiant == id1)
@@ -29,22 +36,20 @@ int degreSeparation(Graph* graph, int id1, int id2)
         return -1;
     }
 
-    visited[start] = 1;    // Marquer le sommet de départ comme visité
-    level[start] = 0;      // Son niveau est 0 (point de départ)
-    file[rear++] = start;  // Ajouter l'utilisateur source dans la file
+    visited[start] = 1;  
+    level[start] = 0;    
+    file[rear++] = start;
 
-    while(front < rear) // Tant que la file n'est pas vide
+    while(front < rear) 
     {
-        int current = file[front++]; // Retirer un élément de la file
+        int current = file[front++];
 
-        // Parcours de ses amis
-        struct AdjListNode* temp = graph->array[current].head->next; // Pointeur sur chaque ami
+        struct AdjListNode* temp = graph->array[current].head->next;
 
         while(temp != NULL)
         {
-            int neighbor = -1; // L'indice de l'ami courant
+            int neighbor = -1;
 
-            // Chercher dans le tableau le sommet correspondant à l'Id du cible
             for(int i = 0; i < graph->pos; ++i)
             {
                 if(graph->array[i].head && graph->array[i].head->identifiant == temp->identifiant)
@@ -54,11 +59,10 @@ int degreSeparation(Graph* graph, int id1, int id2)
                 }
             }
 
-            // Marquer le voisin comme visité et calculer sa distance
             if(neighbor != -1 && !visited[neighbor])
             {
                 visited[neighbor] = 1;
-                level[neighbor] = level[current] + 1; // Incrémenter le niveau
+                level[neighbor] = level[current] + 1;
 
                 if(neighbor == end)
                     return level[neighbor];
@@ -69,12 +73,12 @@ int degreSeparation(Graph* graph, int id1, int id2)
                     return -1;
                 }
 
-                file[rear++] = neighbor; // Ajouter ce voisin à la file
+                file[rear++] = neighbor;
             }
 
-            temp = temp->next; // Passer à l'ami suivant
+            temp = temp->next;
         }
     }
 
-    return -1; // Si aucun chemin n'est trouvé
+    return -1;
 }

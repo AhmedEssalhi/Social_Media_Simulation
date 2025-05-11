@@ -12,16 +12,18 @@ int main(void)
 
     do
     {
-        printf("\nMenu :\n");
+        printf("\n-------------MENU-------------\n");
         printf("1. Ajouter un utilisateur\n");
-        printf("2. Afficher la liste\n");
-        printf("3. Creer ami(e)\n");
-        printf("4. Quitter\n");
-        printf("5. Afficher les amis\n");
-        printf("6. Rechecher un utilisateur\n");
-        printf("7. Rechercher un amis\n");
-        printf("8. Trouver amis en commun\n");
-        printf("9. Degré de séparation\n");
+        printf("2. Afficher la liste des utilisateurs\n");
+        printf("3. Creer une amitié\n");
+        printf("4. Afficher les amis d'un utilisateur\n");
+        printf("5. Trouver amis en commun\n");
+        printf("6. Suggerer des amis\n");
+        printf("\n---SERVICES SUPPLIMENTAIRES---\n");
+        printf("    7. Rechercher pour un ami d'un utilisateur\n");
+        printf("    8. Afficher la Degré de séparation entre deux utilisateur\n");
+        printf("    9. Rechecher pour un utilisateur\n");
+        printf("   -1. Quitter\n");
         printf("Entrez votre choix : ");
         scanf("%d", &choix);
 
@@ -36,25 +38,28 @@ int main(void)
         case 3:
             addFriend(graph);
             break;
-        case 4:
-            printf("Quitter le programme\n");
+        case -1:
+            printf("Au Revoire...\n");
             break;
-        case 5:
+        case 4:
         {
-            printf("L'identifiant: ");
+            printf("\nEntrer L'ID d'utilisateur: ");
             scanf("%d", &id);
             printFriends(*graph, id);
         }
         break;
-        case 6:
+        case 9:
         {
-            printf("L'identifiant: ");
+            printf("Entrer L'ID d'utilisateur: ");
             scanf("%d", &id);
             pos = searchUserId(*graph, id);
             if (pos == -1)
-                printf("User id (%d), Not Found\n", id);
+                printf("Aucun utilsateur avec l'ID (%d), n'est trouvée\n", id);
             else
-                printf("User id (%d) Found in position %d\n", id, pos);
+            {
+                printf("Un utilisateur avec l'id (%d) est trouvee dans la position %d\n", id, pos);
+                printNodeInfo(graph->array[pos - 1].head);
+            }
         }
         break;
         case 7:
@@ -62,60 +67,99 @@ int main(void)
             AdjListNode *found;
             int friendId;
 
-            printf("User ID: ");
+            printf("Entrer L'ID d'utilisateur: ");
             scanf("%d", &id);
             pos = searchUserId(*graph, id);
             if (pos == -1)
             {
-                printf("User ID not found\n");
+                printf("Aucun utilsateur avec l'ID (%d) n'est trouvée\n", id);
                 break;
             }
-            printf("pos-> %d\nFriend ID: ", pos);
+            printf("L'utilisateur est trouvee dans la position %d\n", pos);
+            printf("Entrer L'ID de l'ami(e): ");
             scanf("%d", &friendId);
             found = searchFriend(&graph->array[pos - 1], friendId);
             if (found == NULL)
             {
-                printf("Friend not found\n");
+                printf("Aucun ami(e) avec l'ID (%d) n'est trouvée\n", friendId);
                 break;
             }
-            printf("\nNode found\n");
+            printf("\nUn amis avec l'ID\n");
             printNodeInfo(found);
         }
         break;
-        case 8:
+        case 5:
         {
             int id1, id2;
             AdjList *commonFriend;
 
-            printf("ID1: ");
+            printf("Entrer L'ID du premier utilisateur: ");
             scanf("%d", &id1);
-            printf("ID2: ");
+            printf("Entrer L'ID du deuxieme utilisateur: ");
             scanf("%d", &id2);
 
             commonFriend = findCommonFriends(*graph, id1, id2);
-            
             if (!commonFriend->head)
             {
-                printf("No common friends between IdUser %d and IdUser %d\n", id1, id2);
+                printf("Il n'existe aucun amis en commun entre les deux utilisateur entree\n");
                 break;
             }
 
-            printf("Common friend found\n");
+            printf("Ami(s) en commun trouvee\n");
             AdjListNode *tempHeadNode = commonFriend->head;
-            printf("\nLes amis en communs entre %d et %d sont: \n", id1, id2);
+            printf("\nLes amis en communs trouvee(s) entre %d et %d sont: \n", id1, id2);
             while (tempHeadNode != NULL)
             {
-                printf("Sir/Mis ID: %d\n", tempHeadNode->identifiant);
+                printNodeInfo(tempHeadNode);
                 tempHeadNode = tempHeadNode->next;
             }
-            //printNodeInfo(commonFriend->head);
         }
+        break;
+        case 8:
+        {
+            int id1, id2, degree;
+
+            printf("Entrer L'ID du premier utilisateur: ");
+            scanf("%d", &id1);
+            printf("Entrer L'ID du deuxieme utilisateur: ");
+            scanf("%d", &id2);
+
+            degree = degreSeparation(graph, id1, id2);
+            if (degree == -1)
+                printf("Pas de lien entre (%d) et (%d)\n", id1, id2);
+            else
+                printf("Le degre de separation entre (%d) et (%d) est: (%d)\n", id1, id2, degree);
+        }
+        break;
+        case 6:
+        {
+            int userID;
+            AdjList *suggestFriendList;
+            AdjListNode *suggestFriendListNode;
+
+            printf("Enter the id: ");
+            scanf("%d", &userID);
+
+            suggestFriendList = suggestFriends(*graph, userID);
+            suggestFriendListNode = suggestFriendList->head;
+            if (suggestFriendListNode == NULL)
+            {
+                printf("Aucun ami(e) suggerer\n");
+                break;
+            }
+            printf("La list des ami(s) suggerees pour l'utilisateur avec l'ID (%d):\n", userID);
+            while (suggestFriendListNode != NULL)
+            {
+                printNodeInfo(suggestFriendListNode);
+                suggestFriendListNode = suggestFriendListNode->next;
+            }
             break;
+        }
         default:
             printf("Choix invalide, veuillez réessayer.\n");
             break;
         }
-    } while (choix != 4);
+    } while (choix != -1);
 
     return 0;
 }

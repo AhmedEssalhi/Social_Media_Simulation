@@ -1,7 +1,10 @@
 #include "main.h"
 
 /**
+ * createEmptyList - cree une list vide
  * 
+ * Return: pointeur sur le premier element du list nouvellement cree
+ * NULL en cas d'erreur        
  */
 AdjList *createEmptyList()
 {
@@ -19,7 +22,10 @@ AdjList *createEmptyList()
 }
 
 /**
+ * addFriendNodeAtHead - Ajouter un utilisateur/ami(e) dans le debut d'une list
  * 
+ * @listHead: Pointeur sur le premier element du liste
+ * @listNode: Pointeur sur le noeud a ajouter
  */
 void addFriendNodeAtHead(AdjList *listHead, AdjListNode *listNode)
 {
@@ -76,11 +82,10 @@ AdjList *findCommonFriends(Graph graph, int id1, int id2)
             if (!tempNode)
                 return NULL;
 
-            //tempNode->nom_complet = strcpy(start1->nom_complet, tempNode->nom_complet);
+            strcpy(tempNode->nom_complet, start1->nom_complet);
             tempNode->identifiant = start1->identifiant;
             tempNode->next = NULL;
             addFriendNodeAtHead(commonFriendsList, tempNode);
-            printf("The common user has been added\n");
         }
         start1 = start1->next;
     }

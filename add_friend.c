@@ -5,7 +5,6 @@
  *
  * @graph: Pointeur sur le graphe contenant les utilisateurs et leurs amitiés.
  */
-//Add the option to not add two friends if they're already friends
 void addFriend(Graph* graph) {
     int id1, id2;
     int index1 = -1, index2 = -1;

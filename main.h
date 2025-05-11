@@ -76,6 +76,9 @@ AdjList *findCommonFriends(Graph, int, int);
 void printNodeInfo(AdjListNode *);
 int degreSeparation(Graph*, int, int);
 void freeGraph(Graph*);
+AdjList *createEmptyList();
+AdjList *suggestFriends(Graph, int);
+void addFriendNodeAtHead(AdjList *, AdjListNode *);
 
 #endif
 
