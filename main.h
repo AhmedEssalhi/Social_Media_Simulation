@@ -72,7 +72,7 @@ int printFriends(Graph, int);
 void printLinkedList(AdjList *);
 int searchUserId(Graph, int);
 AdjListNode *searchFriend(AdjList *, int);
-AdjListNode *findCommonFriends(Graph, int, int);
+AdjList *findCommonFriends(Graph, int, int);
 void printNodeInfo(AdjListNode *);
 int degreSeparation(Graph*, int, int);
 void freeGraph(Graph*);

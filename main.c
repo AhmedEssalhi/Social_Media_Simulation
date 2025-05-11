@@ -85,7 +85,7 @@ int main(void)
         case 8:
         {
             int id1, id2;
-            AdjListNode *commonFriend;
+            AdjList *commonFriend;
 
             printf("ID1: ");
             scanf("%d", &id1);
@@ -93,33 +93,24 @@ int main(void)
             scanf("%d", &id2);
 
             commonFriend = findCommonFriends(*graph, id1, id2);
-
-            if (!commonFriend)
+            
+            if (!commonFriend->head)
             {
-                printf("There is no common friend between IdUser %d and IdUser %d\n", id1, id2);
+                printf("No common friends between IdUser %d and IdUser %d\n", id1, id2);
                 break;
             }
+
             printf("Common friend found\n");
-            printNodeInfo(commonFriend);
+            AdjListNode *tempHeadNode = commonFriend->head;
+            printf("\nLes amis en communs entre %d et %d sont: \n", id1, id2);
+            while (tempHeadNode != NULL)
+            {
+                printf("Sir/Mis ID: %d\n", tempHeadNode->identifiant);
+                tempHeadNode = tempHeadNode->next;
+            }
+            //printNodeInfo(commonFriend->head);
         }
-        break;
-        case 9:
-        {
-            int id1, id2, degree;
-
-            printf("ID1: ");
-            scanf("%d", &id1);
-            printf("ID2: ");
-            scanf("%d", &id2);
-
-            degree = degreSeparation(graph, id1, id2);
-
-            if (degree == -1)
-                printf("Pas de lien entre %d et %d\n", id1, id2);
-            else
-                printf("Le degre de separation entre %d et %d est: %d\n", id1, id2, degree);
-        }
-        break;
+            break;
         default:
             printf("Choix invalide, veuillez réessayer.\n");
             break;
