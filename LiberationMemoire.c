@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * freeGraph - Libère la mémoire allouée pour le graphe.
  *

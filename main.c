@@ -21,7 +21,7 @@ int main(void)
         printf("6. Rechecher un utilisateur\n");
         printf("7. Rechercher un amis\n");
         printf("8. Trouver amis en commun\n");
-	printf("9. Degré de séparation\n");
+        printf("9. Degré de séparation\n");
         printf("Entrez votre choix : ");
         scanf("%d", &choix);
 
@@ -45,7 +45,7 @@ int main(void)
             scanf("%d", &id);
             printFriends(*graph, id);
         }
-            break;
+        break;
         case 6:
         {
             printf("L'identifiant: ");
@@ -53,10 +53,10 @@ int main(void)
             pos = searchUserId(*graph, id);
             if (pos == -1)
                 printf("User id (%d), Not Found\n", id);
-            else   
+            else
                 printf("User id (%d) Found in position %d\n", id, pos);
         }
-            break;
+        break;
         case 7:
         {
             AdjListNode *found;
@@ -81,7 +81,7 @@ int main(void)
             printf("\nNode found\n");
             printNodeInfo(found);
         }
-            break;
+        break;
         case 8:
         {
             int id1, id2;
@@ -93,7 +93,7 @@ int main(void)
             scanf("%d", &id2);
 
             commonFriend = findCommonFriends(*graph, id1, id2);
-            
+
             if (!commonFriend)
             {
                 printf("There is no common friend between IdUser %d and IdUser %d\n", id1, id2);
@@ -102,24 +102,24 @@ int main(void)
             printf("Common friend found\n");
             printNodeInfo(commonFriend);
         }
-            break;
-	case 9:
-                {
-                    int id1, id2, degree;
-        
-                    printf("ID1: ");
-                    scanf("%d", &id1);
-                    printf("ID2: ");
-                    scanf("%d", &id2);
-        
-                    degree = degreSeparation(graph, id1, id2);
-        
-                    if (degree == -1)
-                        printf("Pas de lien entre %d et %d\n", id1, id2);
-                    else
-                        printf("Le degre de separation entre %d et %d est: %d\n", id1, id2, degree);
-                }
-                    break;
+        break;
+        case 9:
+        {
+            int id1, id2, degree;
+
+            printf("ID1: ");
+            scanf("%d", &id1);
+            printf("ID2: ");
+            scanf("%d", &id2);
+
+            degree = degreSeparation(graph, id1, id2);
+
+            if (degree == -1)
+                printf("Pas de lien entre %d et %d\n", id1, id2);
+            else
+                printf("Le degre de separation entre %d et %d est: %d\n", id1, id2, degree);
+        }
+        break;
         default:
             printf("Choix invalide, veuillez réessayer.\n");
             break;
