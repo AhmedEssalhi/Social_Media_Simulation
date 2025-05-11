@@ -32,11 +32,13 @@ void printLinkedList(AdjList *head)
  * @id: id of the user to search for and print their friends list if found
  * 
  * Return: 1 in case of success (user found). -1 otherwise
+ * -> ADD THE ERROR WHEN NO FRIENDS ARE FOUND FOR THE USER WHOSE FRIENDS TO BE PRINTED
  */
 int printFriends(Graph graph, int id)
 {
     if (searchUserId(graph, id) == -1)
         return -1;
+
     for (int i = 0; i < graph.pos; i++)
     {
         if (id == graph.array[i].head->identifiant)
